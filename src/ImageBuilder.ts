@@ -159,7 +159,7 @@ export default class ImageBuilder {
 
     private async createStorageAccount() {
         this.storageAccount = Util.format('%s%s', constants.storageAccountName, getCurrentTime());
-        await this.executeAzCliCommand(`storage account create --name "${this.storageAccount}" --resource-group "${this._taskParameters.resourceGroupName}" --location "${this._taskParameters.location}" --sku Standard_RAGRS --allow-blob-public-access false --https-only true`);
+        await this.executeAzCliCommand(`dupa storage account create --name "${this.storageAccount}" --resource-group "${this._taskParameters.resourceGroupName}" --location "${this._taskParameters.location}" --sku Standard_RAGRS --allow-blob-public-access false --https-only true`);
         core.debug("Created storage account " + this.storageAccount);
         var outStream = await this.executeAzCliCommand(`storage account keys list -g "${this._taskParameters.resourceGroupName}" -n "${this.storageAccount}"`);
         this.accountkeys = JSON.parse(`${outStream}`)[0].value;
